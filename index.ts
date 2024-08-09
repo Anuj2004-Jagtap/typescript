@@ -105,53 +105,53 @@ console.log(Direction); // Logs the Direction enum object
 /********************************************************************************************************************/
 
 interface Person {
-    name : string ;
-    age : number ;
-    greet () : void ;
-    adress? : string ; // Optional Property
+    name: string;
+    age: number;
+    greet(): void;
+    adress?: string; // Optional Property
 }
 
 
 // Read Only 
 
 interface Point {
-    readonly x : number ;
-    readonly y : number ;
+    readonly x: number;
+    readonly y: number;
 }
 
-const point : Point = { x : 29 , y : 69 } ;
+const point: Point = { x: 29, y: 69 };
 
 // ------------------------- implementing an interface in a class ----------------- //
 
 class Employee implements Person {
-    name : string ;
-    age : number ;
+    name: string;
+    age: number;
 
-    constructor (name : string , age : number){ // its gets called when new instance is created 
-        this.name = name ;
-        this.age = age ;
+    constructor(name: string, age: number) { // its gets called when new instance is created 
+        this.name = name;
+        this.age = age;
     }
 
-    greet(): void  { // doesnt return anything just logs thing
+    greet(): void { // doesnt return anything just logs thing
         console.log(` Hello My Name is ${this.name} and iam ${age} years old `)
     }
 }
 
-const employee = new Employee( "shravan" , 19); // creating an instance . 
+const employee = new Employee("shravan", 19); // creating an instance . 
 
-employee.greet(); 
+employee.greet();
 
 /********************************************************************************************************************/
 // Type Aliances 
 /********************************************************************************************************************/
 
 
-type StudentNo = string | number ;
+type StudentNo = string | number;
 
-let value : StudentNo ;
+let value: StudentNo;
 
-value = 'twenty' ;
-value = 20 ;
+value = 'twenty';
+value = 20;
 
 // -----------------------------------------------------------------------------??//
 type Points = {
@@ -183,9 +183,9 @@ getUser("abc123");  // valid
 
 //________________________________________??___________________//
 
-type  sayBye = (name : string) => string ; 
+type sayBye = (name: string) => string;
 
-const saybye : sayBye = ( name ) =>{
+const saybye: sayBye = (name) => {
     return ` Bye ${name} `
 }
 console.log(saybye("anuj"))
@@ -211,4 +211,45 @@ const user: User = {
 /********************************************************************************************************************/
 // functions
 /********************************************************************************************************************/
+
+// Typed Functions 
+
+function add1(val1: number, val2: number): number {
+    return val1 + val2;
+}
+
+// optional parameters 
+
+function add2(val1: number, val2: number, val3?: number) {
+    if (val3) return val1 + val2 + val3
+}
+
+// default parameters 
+
+function multiply(val1: number, val2: number, val3: number = 67) {
+    return val1 * val2 * val3;
+}
+
+// Rest Parameters 
+
+function sum(...numbers: number[]): number {
+    return numbers.reduce((acc, value) => acc + value, 0)
+}
+
+// Function Overloading 
+/*
+ Overloading Function Types
+TypeScript supports function overloading, which allows you to define multiple signatures for a function based on the types of its parameters. The implementation of the function should be compatible with all the overloaded signatures.
+*/
+
+
+function add(a: number, b: number): number;
+function add(a: string, b: string): string;
+function add(a: any, b: any): any {
+    return a + b;
+}
+
+console.log(add(1, 2));     // Output: 3
+console.log(add("Hello ", "World")); // Output: "Hello World"
+
 
