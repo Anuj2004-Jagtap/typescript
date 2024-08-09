@@ -253,3 +253,17 @@ console.log(add(1, 2));     // Output: 3
 console.log(add("Hello ", "World")); // Output: "Hello World"
 
 
+/********************************************************************************************************************/
+// Generics
+/********************************************************************************************************************/
+
+function getFirstNumber <T>( num : T[] ){
+    return num[0]
+}
+
+const numberstt = [1,4,5,6,7] ;
+const stringEX = ['ex','sir']
+const firstNum = getFirstNumber(numberstt)
+const firstString = getFirstNumber(stringEX)
+
+
